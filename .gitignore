@@ -1,0 +1,35 @@
+# Ignore the virtual environment directory
+.venv/
+env/
+
+# Ignore environment variables file
+.env
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore credentials filesg
+credentials.json
+*.pem
+
+# Ignore specific JSON file
+dwdswb-headwords.json
+
+# Ignore MP3 files
+*.mp3
+
+credentials/
