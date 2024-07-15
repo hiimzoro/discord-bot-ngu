@@ -1,5 +1,5 @@
-# Use an official Python runtime as a parent image
-FROM python:3.12.4-alpine
+# Use an official Python runtime as a parent image for ARM architecture
+FROM python:3.12.4-buster
 
 # Set the working directory in the container
 WORKDIR /pythonProject
@@ -8,8 +8,14 @@ WORKDIR /pythonProject
 COPY requirements.txt ./
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt \
-    && rm -rf /var/cache/apk/* /root/.cache
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        && \
+    pip install --no-cache-dir -r requirements.txt && \
+    apt-get remove -y build-essential && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy the rest of the application code into the container
 COPY . .
